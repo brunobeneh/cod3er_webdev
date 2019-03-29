@@ -1,0 +1,50 @@
+O arquivo package.json é o ponto de partida de qualquer projeto NodeJS. Ele é responsável por descrever 
+o seu projeto, informar as engines (versão do node e do npm), url do repositório, versão do projeto, 
+dependências de produção e de desenvolvimento dentre outras coisas.
+No terminal, usamos os comandos 'npm init' para criarmos um arquivo package.json e preencher todas as
+informações pedidas. Para evitar essa parte, podemos criar um package.json com o comando 'npm init -y'
+que faz a instalação e responde todas as informações com sim (yes).
+
+Em seguida, nós instalamos um dependência chamada axios com o comando 'npm i --save axios', --save significa que
+queremos salvar essa dependência no nosso package.json.
+
+Ao abrirmos o arquivo package.json, podemos ver que ao final do arquivo, na área "dependencies":, agora temos "axios":e a versão.
+Se a versão estiver dessa forma: "axios": "^0.17.1" o símbolo de ^ significa que podemos atualizar a dependência no seu minor, 
+que é o número do meio (.17.), mas não poderemos atualizar para um major diferente, major é o primeiro número da versão (0.).
+Caso tenha antes dos números um ~ no lugar do ^, significa que poderemos atualizar apenas o fixer, que é o último número da nossa
+versão(.1).
+Caso venha sem nenhum símbolo antes dos números, significa que só aquela versão pode ser instalada, nós tambem podemos especificar
+exatamente a versão que queremos com o comando no terminal:
+
+npm i ou install --save axios@0.17.1 -E
+
+Essa linha, pedimos para instalar o axios com a versao 0.17.1, o @ é o símbolo que indica que vamos passar a versão e o -E indica
+que queremos essa versão exclusivamente.
+
+obs:Se quisermos instalar alguma dependência só para teste, podemos dizer que será só para o desenvolvimento, com a flag -dev:
+
+npm i ou install --save-dev axios@0.17.1 -E
+
+npm i ou install, salva qualquer packages dentro de dependencies por default. Mas você pode controlar onde e como salvar adicionando flags,
+como no exemplo acima.
+
+O arquivo package-lock.json, serve para criar hashes de segurança de versão das dependências usadas no projeto. Para garantir a integridade
+e funcionamento do projeto caso tenha alguma dependência diferente/atualizada de quando o projeto foi feito.
+
+No arquivo package.json, podemos alteramos o arquivo main:, de index.js para funcionarios.js. Na área de scripts, colocamos dois novos
+paramêtros, o start: e o dev, ambos com o argumento "nodemon":
+
+"name": "funcionarios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "funcionarios.js",
+  "scripts": {
+    "start": "nodemon",
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+
+para fazermos rodar o script start, vamos até o terminal, dentro da pasta funcionarios e usamos o comando npm start. Para os demais, precisamos
+colocar o comando run antes do nome do script:
+
+npm run dev
+
